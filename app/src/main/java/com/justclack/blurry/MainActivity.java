@@ -3,10 +3,12 @@ package com.justclack.blurry;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +31,14 @@ import ja.burhanrashid52.photoeditor.PhotoFilter;
 import ja.burhanrashid52.photoeditor.SaveSettings;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageView button;
     PhotoEditorView mPhotoEditorView;
     PhotoEditor mPhotoEditor;
     File myDir, file;
-    Button textButton, emoji, save;
+    Button textButton, emoji, chooseImg, undo, redo, save;
     private EmojiBSFragment mEmojiBSFragment;
     TextEditorDialogFragment textEditorDialogFragment;
+    Uri imageURI = null;
+    int RC_IMG_CHOOSE = 1212;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPhotoEditor.setBrushSize(2);
         mPhotoEditor.setOpacity(2);
         mPhotoEditor.brushEraser();
-        mPhotoEditor.setFilterEffect(PhotoFilter.BRIGHTNESS);
+        //mPhotoEditor.setFilterEffect(PhotoFilter.BRIGHTNESS);
 
         clickListeners();
 
@@ -66,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         emoji.setOnClickListener(this);
         textButton.setOnClickListener(this);
         save.setOnClickListener(this);
+        undo.setOnClickListener(this);
+        redo.setOnClickListener(this);
+        chooseImg.setOnClickListener(this);
     }
 
     private void findViewByIds() {
@@ -73,11 +79,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textButton = findViewById(R.id.text);
         emoji = findViewById(R.id.emoji);
         save = findViewById(R.id.save);
+        undo = findViewById(R.id.undo);
+        redo = findViewById(R.id.redo);
+        chooseImg = findViewById(R.id.chooseImg);
     }
 
     @SuppressLint("MissingPermission")
     @Override
     public void onClick(View v) {
+
+        if (v == chooseImg) {
+            Intent choose = new Intent(Intent.ACTION_GET_CONTENT);
+            choose.setType("image/*");
+            startActivityForResult(choose, RC_IMG_CHOOSE);
+        }
+        if (v == undo) {
+            mPhotoEditor.undo();
+        }
+        if (v == redo) {
+            mPhotoEditor.redo();
+        }
+
         if (v == textButton) {
             textEditorDialogFragment = TextEditorDialogFragment.show(MainActivity.this);
             textEditorDialogFragment.setOnTextEditorListener(new TextEditorDialogFragment.TextEditor() {
@@ -104,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setClearViewsEnabled(true)
                     .setTransparencyEnabled(true)
                     .build();
-           /* mPhotoEditor.saveAsFile(file.getAbsolutePath(), saveSettings, new PhotoEditor.OnSaveListener() {
+            mPhotoEditor.saveAsFile(file.getAbsolutePath(), saveSettings, new PhotoEditor.OnSaveListener() {
                 @Override
                 public void onSuccess(@NonNull String imagePath) {
                     mPhotoEditorView.getSource().setImageURI(Uri.fromFile(new File(imagePath)));
@@ -114,8 +136,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onFailure(@NonNull Exception exception) {
 
                 }
-            });*/
-            mPhotoEditor.saveAsBitmap(new OnSaveBitmap() {
+            });
+           /* mPhotoEditor.saveAsBitmap(new OnSaveBitmap() {
                 @Override
                 public void onBitmapReady(Bitmap saveBitmap) {
                     FileOutputStream fos = null;
@@ -140,8 +162,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onFailure(Exception e) {
 
                 }
-            });
+            });*/
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_IMG_CHOOSE) {
+            if (resultCode == RESULT_OK) {
+                imageURI = data.getData();
+                //chooseImg.setImageURI(imageURI);
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageURI);
+                    mPhotoEditor.addImage(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
