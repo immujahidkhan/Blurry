@@ -11,88 +11,18 @@
         android:id="@+id/photoEditorView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
         app:photo_src="@drawable/srk" />
 
-    <HorizontalScrollView
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/black"
-        android:scrollbars="none">
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_main" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/text"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/ic_text"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <Button
-                android:id="@+id/emoji"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/ic_emoji"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <Button
-                android:id="@+id/chooseImg"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/ic_insert_photo"
-                android:clickable="true"
-                android:focusable="true"
-                android:scaleType="fitXY" />
-
-            <Button
-                android:id="@+id/undo"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/undo"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <Button
-                android:id="@+id/redo"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/redo"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <Button
-                android:id="@+id/save"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/ic_save"
-                android:clickable="true"
-                android:focusable="true" />
-        </LinearLayout>
-    </HorizontalScrollView>
 </RelativeLayout>

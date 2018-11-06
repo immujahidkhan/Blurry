@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF861F</color>
+    <color name="colorPrimaryDark">#FF861F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
-
     <color name="black">#000000</color>
     <color name="blue_color_picker">#0066FF</color>
     <color name="brown_color_picker">#AF593E</color>
@@ -18,5 +17,4 @@
     <color name="yellow_green_color_picker">#C5E17A</color>
     <color name="tool_bg">#151414</color>
     <color name="btn_color">#ff4400</color>
-
 </resources>

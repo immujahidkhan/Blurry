@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/addText"
+        android:enabled="true"
+        android:icon="@drawable/ic_text"
+        android:title="@string/text"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/addEmoji"
+        android:enabled="true"
+        android:icon="@drawable/ic_emoji"
+        android:title="@string/emoji"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/addPhoto"
+        android:enabled="true"
+        android:icon="@drawable/ic_insert_photo"
+        android:title="@string/add_photo"
+        app:showAsAction="ifRoom" />
+   <!-- <item
+        android:id="@+id/undo"
+        android:enabled="true"
+        android:icon="@drawable/undo"
+        android:title="@string/undo"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/redo"
+        android:enabled="true"
+        android:icon="@drawable/redo"
+        android:title="@string/redo"
+        app:showAsAction="ifRoom" />-->
+    <item
+        android:id="@+id/background"
+        android:enabled="true"
+        android:icon="@drawable/ic_wallpaper"
+        android:title="@string/add_background"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/save"
+        android:enabled="true"
+        android:icon="@drawable/ic_save"
+        android:title="@string/save"
+        app:showAsAction="ifRoom" />
+</menu>

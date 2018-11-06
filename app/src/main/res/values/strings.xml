@@ -7,4 +7,11 @@
     <string name="label_text">Text</string>
     <string name="label_filter">Filter</string>
     <string name="label_adjust">Adjust</string>
+    <string name="text">Add Text</string>
+    <string name="emoji">Add Emoji</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="add_background">Change Background</string>
+    <string name="save">Save</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
 </resources>
