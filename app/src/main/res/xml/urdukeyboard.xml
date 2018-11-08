@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyHeight="10%p"
+    android:keyWidth="12.50%p">
+
+    <Row>
+        <Key
+            android:codes="55"
+            android:keyEdgeFlags="left"
+            android:keyLabel="7" />
+        <Key
+            android:codes="56"
+            android:keyLabel="8" />
+        <Key
+            android:codes="57"
+            android:keyLabel="9" />
+        <Key
+            android:codes="65"
+            android:horizontalGap="6.25%p"
+            android:keyLabel="A" />
+        <Key
+            android:codes="66"
+            android:keyLabel="B" />
+        <Key
+            android:codes="-5"
+            android:horizontalGap="6.25%p"
+            android:isRepeatable="true"
+            android:keyIcon="@drawable/sym_keyboard_delete" />
+        <Key
+            android:codes="55006"
+            android:keyEdgeFlags="right"
+            android:keyLabel="CLR" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="52"
+            android:keyEdgeFlags="left"
+            android:keyLabel="4" />
+        <Key
+            android:codes="53"
+            android:keyLabel="5" />
+        <Key
+            android:codes="54"
+            android:keyLabel="6" />
+        <Key
+            android:codes="67"
+            android:horizontalGap="6.25%p"
+            android:keyLabel="C" />
+        <Key
+            android:codes="68"
+            android:keyLabel="D" />
+        <Key
+            android:codes="55002"
+            android:horizontalGap="6.25%p"
+            android:isRepeatable="true"
+            android:keyIcon="@drawable/sym_keyboard_left" />
+        <Key
+            android:codes="55003"
+            android:isRepeatable="true"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/sym_keyboard_right" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="49"
+            android:keyEdgeFlags="left"
+            android:keyLabel="1" />
+        <Key
+            android:codes="50"
+            android:keyLabel="2" />
+        <Key
+            android:codes="51"
+            android:keyLabel="3" />
+        <Key
+            android:codes="69"
+            android:horizontalGap="6.25%p"
+            android:keyLabel="E" />
+        <Key
+            android:codes="70"
+            android:keyLabel="F" />
+        <Key
+            android:codes="55001"
+            android:horizontalGap="6.25%p"
+            android:keyIcon="@drawable/sym_keyboard_allleft" />
+        <Key
+            android:codes="55004"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/sym_keyboard_allright" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="48"
+            android:horizontalGap="6.25%p"
+            android:keyEdgeFlags="left"
+            android:keyLabel="0"
+            android:keyWidth="25%p" />
+        <Key
+            android:codes="-3"
+            android:horizontalGap="12.50%p"
+            android:keyIcon="@drawable/sym_keyboard_done"
+            android:keyWidth="25%p" />
+        <Key
+            android:codes="55000"
+            android:horizontalGap="6.25%p"
+            android:keyLabel="PREV" />
+        <Key
+            android:codes="55005"
+            android:keyEdgeFlags="right"
+            android:keyLabel="NEXT" />
+    </Row>
+</Keyboard>

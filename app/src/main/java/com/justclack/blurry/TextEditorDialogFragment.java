@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -61,8 +63,7 @@ public class TextEditorDialogFragment extends DialogFragment {
 
     //Show dialog with default text input as empty and text color white
     public static TextEditorDialogFragment show(@NonNull AppCompatActivity appCompatActivity) {
-        return show(appCompatActivity,
-                "", ContextCompat.getColor(appCompatActivity, R.color.white));
+        return show(appCompatActivity, "", ContextCompat.getColor(appCompatActivity, R.color.white));
     }
 
     @Override
@@ -87,23 +88,12 @@ public class TextEditorDialogFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Create the Keyboard
+
         mAddTextEditText = view.findViewById(R.id.add_text_edit_text);
         mInputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        InputMethodSubtype ims = mInputMethodManager.getCurrentInputMethodSubtype();
-        //String localeString = ims.getLocale();
-        String localeString = "ur-PK";
-       /* Locale locale = new Locale(localeString);
-        String currentLanguage = locale.getDisplayLanguage();*/
-        Resources res = getContext().getResources();
-        // Change locale settings in the app.
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            conf.setLocale(new Locale(localeString)); // API 17+ only.
-        }
-        // Use conf.locale = new Locale(...) if targeting lower versions
-        res.updateConfiguration(conf, dm);
         mAddTextDoneTextView = view.findViewById(R.id.add_text_done_tv);
+
 
         //Setup the color picker for text color
         RecyclerView addTextColorPickerRecyclerView = view.findViewById(R.id.add_text_color_picker_recycler_view);

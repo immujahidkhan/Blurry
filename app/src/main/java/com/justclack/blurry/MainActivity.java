@@ -1,9 +1,9 @@
 package com.justclack.blurry;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.pm.PackageManager;
+
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -16,21 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.Toast;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import ja.burhanrashid52.photoeditor.OnSaveBitmap;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
 import ja.burhanrashid52.photoeditor.PhotoFilter;
@@ -118,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
                         mPhotoEditor.saveAsFile(file.getAbsolutePath(), saveSettings, new PhotoEditor.OnSaveListener() {
                             @Override
                             public void onSuccess(@NonNull String imagePath) {
-                                mPhotoEditorView.getSource().setImageURI(Uri.fromFile(new File(imagePath)));
+                                //mPhotoEditorView.getSource().setImageURI(Uri.fromFile(new File(imagePath)));
+                                Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override

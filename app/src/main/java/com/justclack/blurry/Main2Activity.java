@@ -23,7 +23,7 @@ public class Main2Activity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Main2Activity.this, MainActivity.class));
+                startActivity(new Intent(Main2Activity.this, DragableActivity.class));
                 finish();
             }
         }, 2000);
